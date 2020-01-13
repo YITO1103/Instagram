@@ -26,11 +26,11 @@
         <!--投稿-->
         <scene sceneID="1kO-Jv-kxn">
             <objects>
-                <viewController storyboardIdentifier="ImageSelect" id="Rv4-gm-nBB" customClass="ImageSelectViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageSelect" modalPresentationStyle="fullScreen" id="Rv4-gm-nBB" customClass="ImageSelectViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NkU-Oa-4rF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="uFA-7J-zYe"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="投稿" image="camera" id="CN1-Gk-Jvh"/>
@@ -62,7 +62,7 @@
                     <view key="view" contentMode="scaleToFill" id="jT0-Pu-QY2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="bQd-Qd-F62"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="設定" image="setting" id="JSM-ET-B3F"/>
@@ -89,7 +89,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="DYf-Q4-Mcc">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="I3a-j4-fi7" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="I3a-j4-fi7" customClass="TabBarController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Pf0-V5-qsN">
                         <autoresizingMask key="autoresizingMask"/>
