@@ -112,6 +112,9 @@
                                 <state key="normal" title="アカウント作成" backgroundImage="btn">
                                     <color key="titleColor" red="0.98039215690000003" green="0.98862444930000004" blue="0.98385942059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="handleCreateAccountButton:" destination="jvg-vu-J7f" eventType="touchUpInside" id="2pa-gj-q3j"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmr-Q8-HR0">
                                 <rect key="frame" x="57" y="256" width="300" height="40"/>
@@ -122,6 +125,9 @@
                                 <state key="normal" title="ログイン" backgroundImage="btn">
                                     <color key="titleColor" red="0.98039215690000003" green="0.98862444930000004" blue="0.98385942059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="handleLoginButton:" destination="jvg-vu-J7f" eventType="touchUpInside" id="kOC-fb-ATi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -139,6 +145,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vhm-Hm-L6E"/>
                     </view>
+                    <connections>
+                        <outlet property="displayNameTextField" destination="Xml-fj-7j2" id="Kgv-PW-eVc"/>
+                        <outlet property="mailAddressTextField" destination="gYm-dR-vDB" id="kZX-Mj-7OF"/>
+                        <outlet property="passwordTextField" destination="Sw4-xZ-YlT" id="O42-Vr-NvB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZbZ-6U-HJU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
