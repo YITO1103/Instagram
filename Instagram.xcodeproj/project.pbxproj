@@ -20,6 +20,7 @@
 		7F3C808423CB4D45000FD0D4 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C808323CB4D45000FD0D4 /* SettingViewController.swift */; };
 		7F3C808623CC3CBD000FD0D4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C808523CC3CBD000FD0D4 /* TabBarController.swift */; };
 		7F3C808823CC85D8000FD0D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F3C808723CC85D8000FD0D4 /* GoogleService-Info.plist */; };
+		7F7D70D223D0552B00A49BD9 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7D70D123D0552B00A49BD9 /* Const.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		7F3C808323CB4D45000FD0D4 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7F3C808523CC3CBD000FD0D4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7F3C808723CC85D8000FD0D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7F7D70D123D0552B00A49BD9 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		AF44F1D3D03F72993B294219 /* Pods-Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.debug.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +98,7 @@
 				7F3C807223CB4BE4000FD0D4 /* LaunchScreen.storyboard */,
 				7F3C807523CB4BE4000FD0D4 /* Info.plist */,
 				7F3C808723CC85D8000FD0D4 /* GoogleService-Info.plist */,
+				7F7D70D123D0552B00A49BD9 /* Const.swift */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				7F3C806823CB4BE1000FD0D4 /* AppDelegate.swift in Sources */,
 				7F3C808623CC3CBD000FD0D4 /* TabBarController.swift in Sources */,
 				7F3C806A23CB4BE1000FD0D4 /* SceneDelegate.swift in Sources */,
+				7F7D70D223D0552B00A49BD9 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
