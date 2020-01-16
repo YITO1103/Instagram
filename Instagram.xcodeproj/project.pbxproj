@@ -21,6 +21,9 @@
 		7F3C808623CC3CBD000FD0D4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C808523CC3CBD000FD0D4 /* TabBarController.swift */; };
 		7F3C808823CC85D8000FD0D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F3C808723CC85D8000FD0D4 /* GoogleService-Info.plist */; };
 		7F7D70D223D0552B00A49BD9 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7D70D123D0552B00A49BD9 /* Const.swift */; };
+		7F7D70D423D065CF00A49BD9 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7D70D323D065CF00A49BD9 /* PostData.swift */; };
+		7F7D70D723D066A000A49BD9 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7D70D523D066A000A49BD9 /* PostTableViewCell.swift */; };
+		7F7D70D823D066A000A49BD9 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F7D70D623D066A000A49BD9 /* PostTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +44,9 @@
 		7F3C808523CC3CBD000FD0D4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7F3C808723CC85D8000FD0D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7F7D70D123D0552B00A49BD9 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		7F7D70D323D065CF00A49BD9 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
+		7F7D70D523D066A000A49BD9 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		7F7D70D623D066A000A49BD9 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		AF44F1D3D03F72993B294219 /* Pods-Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.debug.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +105,9 @@
 				7F3C807523CB4BE4000FD0D4 /* Info.plist */,
 				7F3C808723CC85D8000FD0D4 /* GoogleService-Info.plist */,
 				7F7D70D123D0552B00A49BD9 /* Const.swift */,
+				7F7D70D323D065CF00A49BD9 /* PostData.swift */,
+				7F7D70D523D066A000A49BD9 /* PostTableViewCell.swift */,
+				7F7D70D623D066A000A49BD9 /* PostTableViewCell.xib */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -173,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F3C807423CB4BE4000FD0D4 /* LaunchScreen.storyboard in Resources */,
+				7F7D70D823D066A000A49BD9 /* PostTableViewCell.xib in Resources */,
 				7F3C808823CC85D8000FD0D4 /* GoogleService-Info.plist in Resources */,
 				7F3C807123CB4BE4000FD0D4 /* Assets.xcassets in Resources */,
 				7F3C806F23CB4BE1000FD0D4 /* Main.storyboard in Resources */,
@@ -228,11 +238,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F7D70D723D066A000A49BD9 /* PostTableViewCell.swift in Sources */,
 				7F3C808023CB4CF5000FD0D4 /* ImageSelectViewController.swift in Sources */,
 				7F3C807E23CB4CC5000FD0D4 /* HomeViewController.swift in Sources */,
 				7F3C808223CB4D0C000FD0D4 /* PostViewController.swift in Sources */,
 				7F3C808423CB4D45000FD0D4 /* SettingViewController.swift in Sources */,
 				7F3C807C23CB4C98000FD0D4 /* LoginViewController.swift in Sources */,
+				7F7D70D423D065CF00A49BD9 /* PostData.swift in Sources */,
 				7F3C806823CB4BE1000FD0D4 /* AppDelegate.swift in Sources */,
 				7F3C808623CC3CBD000FD0D4 /* TabBarController.swift in Sources */,
 				7F3C806A23CB4BE1000FD0D4 /* SceneDelegate.swift in Sources */,
