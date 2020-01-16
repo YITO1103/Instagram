@@ -30,7 +30,55 @@
                     <view key="view" contentMode="scaleToFill" id="NkU-Oa-4rF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU5-Tt-T5k">
+                                <rect key="frame" x="57" y="124" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="qGL-vB-2by"/>
+                                </constraints>
+                                <state key="normal" title="ライブラリ" backgroundImage="btn">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleLibraryButton:" destination="Rv4-gm-nBB" eventType="touchUpInside" id="Hk2-yK-4md"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icw-vF-prA">
+                                <rect key="frame" x="57" y="174" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Hz3-9P-ymS"/>
+                                </constraints>
+                                <state key="normal" title="カメラ" backgroundImage="btn">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleCameraButton:" destination="Rv4-gm-nBB" eventType="touchUpInside" id="U4T-2y-Nri"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="reg-eL-3aE">
+                                <rect key="frame" x="57" y="224" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="scP-Ab-p68"/>
+                                </constraints>
+                                <state key="normal" title="キャンセル" backgroundImage="btn">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleCancelButton:" destination="Rv4-gm-nBB" eventType="touchUpInside" id="N4e-MB-uIf"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gU5-Tt-T5k" firstAttribute="leading" secondItem="icw-vF-prA" secondAttribute="leading" id="6ti-5O-4tf"/>
+                            <constraint firstItem="gU5-Tt-T5k" firstAttribute="centerX" secondItem="NkU-Oa-4rF" secondAttribute="centerX" id="OOs-C0-pHe"/>
+                            <constraint firstItem="gU5-Tt-T5k" firstAttribute="top" secondItem="uFA-7J-zYe" secondAttribute="top" constant="80" id="S9W-Fi-KUq"/>
+                            <constraint firstItem="uFA-7J-zYe" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="reg-eL-3aE" secondAttribute="trailing" symbolic="YES" id="Som-kE-SSD"/>
+                            <constraint firstItem="reg-eL-3aE" firstAttribute="top" secondItem="icw-vF-prA" secondAttribute="bottom" constant="10" id="Uj0-ED-E8b"/>
+                            <constraint firstItem="uFA-7J-zYe" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="icw-vF-prA" secondAttribute="trailing" symbolic="YES" id="Vl6-Zl-f6L"/>
+                            <constraint firstItem="icw-vF-prA" firstAttribute="top" secondItem="gU5-Tt-T5k" secondAttribute="bottom" constant="10" id="YAX-wl-NdB"/>
+                            <constraint firstItem="gU5-Tt-T5k" firstAttribute="leading" secondItem="reg-eL-3aE" secondAttribute="leading" id="Zlq-Oe-dmB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="uFA-7J-zYe"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="投稿" image="camera" id="CN1-Gk-Jvh"/>
@@ -166,8 +214,8 @@
                                     <action selector="handleLoginButton:" destination="jvg-vu-J7f" eventType="touchUpInside" id="kOC-fb-ATi"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gYm-dR-vDB">
-                                <rect key="frame" x="57" y="126" width="300" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gYm-dR-vDB">
+                                <rect key="frame" x="57" y="124" width="300" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="pA5-vy-ugl"/>
                                 </constraints>
