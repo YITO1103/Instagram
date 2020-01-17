@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import Firebase
+import Firebase // Firestoreにアクセスできるようにする。
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
- // 投稿データを格納する配列
+    // 投稿データを格納する配列
     var postArray: [PostData] = []
 
-    // Firestoreのリスナー
+    // Firestoreのリスナー　データ更新の監視を行う
     var listener: ListenerRegistration!
 
     override func viewDidLoad() {
@@ -29,15 +29,30 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
     }
-
+    
+    
+    
+    
+    
+    // -----------------------------------------------------
+    // ホーム画面を再表示するたびに何度も呼ばれる
+    // -----------------------------------------------------
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("DEBUG_PRINT: viewWillAppear")
 
+        
+        // 現在のログイン状態を確認
         if Auth.auth().currentUser != nil {
-            // ログイン済み
+            // ---------------------------------------------------
+            // ログイン済み→はデータの読み込み(監視)を開始
+            // ---------------------------------------------------
             if listener == nil {
+                // -------------------------------------------------------
                 // listener未登録なら、登録してスナップショットを受信する
+                // データベースの参照場所と取得順序を指定したクエリを作成
+                // postsフォルダに格納されているドキュメントを投稿日時の新しい順に取得する
+                // -------------------------------------------------------
                 let postsRef = Firestore.firestore().collection(Const.PostPath).order(by: "date", descending: true)
                 listener = postsRef.addSnapshotListener() { (querySnapshot, error) in
                     if let error = error {
@@ -55,7 +70,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         } else {
-            // ログイン未(またはログアウト済み)
+            // ---------------------------------------------------
+            // ログイン未(またはログアウト済み)→データの読み込み(監視)を停止して、表示データをクリア
+            // ---------------------------------------------------
             if listener != nil {
                 // listener登録済みなら削除してpostArrayをクリアする
                 listener.remove()
@@ -76,12 +93,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.setPostData(postArray[indexPath.row])
 
         // セル内のボタンのアクションをソースコードで設定する
+        // ※青い線を引っ張ってActionを設定する代わり
         cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
 
         return cell
     }
 
     // セル内のボタンがタップされた時に呼ばれるメソッド
+    // 第一引数にはタップされたUIButtonのインスタンスが格納され、第二引数にはUIEvent型のタップイベントが格納されます。
+    // タップイベントの中には、ボタンをタップした時の画面上の座標位置などが格納されています。
+    // selector指定で呼び出されるメソッドは、先頭に @objcを付与してメソッドを宣言します。
     @objc func handleButton(_ sender: UIButton, forEvent event: UIEvent) {
         print("DEBUG_PRINT: likeボタンがタップされました。")
 
@@ -105,6 +126,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 updateValue = FieldValue.arrayUnion([myid])
             }
             // likesに更新データを書き込む
+            // Firestoreのlikes配列を更新すると、 addSnapshotListenerで監視しているリスナーが投稿データの更新を検出してクロージャを呼び出すため、テーブル表示は自動的に最新の状態に更新される。
             let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
             postRef.updateData(["likes": updateValue])
         }
