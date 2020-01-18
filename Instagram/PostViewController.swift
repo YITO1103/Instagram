@@ -51,8 +51,9 @@ class PostViewController: UIViewController {
             // Dummy
             //let commentRegName = Auth.auth().currentUser?.displayName
             let commentRegDic = [
+                "entryId": "abcdef",
                 "name": name!,
-                "comment": "コメント",
+                "comment": "コメント" + self.textField.text!,
                 "date": FieldValue.serverTimestamp(),
                 ] as [String : Any]
             commentPostRef.setData(commentRegDic)

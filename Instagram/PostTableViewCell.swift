@@ -43,7 +43,18 @@ class PostTableViewCell: UITableViewCell {
         // キャプションの表示
         //self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
         let iLine = Int.random(in: 1..<5)
-        let sCaption  = "\(postData.name!) : \(postData.caption!)"
+        var str1 = ""
+        var str2 = ""
+        if (postData.name != nil)  {
+            str1 = postData.name!
+            
+        }
+        if (postData.caption != nil)  {
+            str2 = postData.caption!
+            
+        }
+        
+        let sCaption  = "\(str1) : \(str2)"
         var sOut = ""
         for i in 0..<iLine {
             if i>0 {
@@ -74,4 +85,5 @@ class PostTableViewCell: UITableViewCell {
             let buttonImage = UIImage(named: "like_none")
             self.likeButton.setImage(buttonImage, for: .normal)
         }
-    }}
+    }    
+}

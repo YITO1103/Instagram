@@ -13,6 +13,8 @@ import Firebase
 
 class CommentData: NSObject {
     var id: String              // 投稿ID（保存する際に作られたユニークなID）
+
+    var entryId : String?
     var name: String?           // 投稿者名
     var comment: String?        // コメント
     var date: Date?             // 日時
@@ -24,6 +26,7 @@ class CommentData: NSObject {
 
         let postDic = document.data()
 
+        self.entryId = postDic["entryId"] as? String
         self.name = postDic["name"] as? String
         self.comment = postDic["comment"] as? String
         let timestamp = postDic["date"] as? Timestamp

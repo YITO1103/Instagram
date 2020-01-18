@@ -11,17 +11,18 @@ import Firebase // Firestoreにアクセスできるようにする。
 import SVProgressHUD
 
 
-
-
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     // 投稿データを格納する配列
     var postArray: [PostData] = []
+    // 投稿データを格納する配列
+    var commentArray: [CommentData] = []
 
     // Firestoreのリスナー　データ更新の監視を行う
-    var listener: ListenerRegistration!
+    var listenerPostData: ListenerRegistration!
+    var listenerCommentData: ListenerRegistration!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,14 +48,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             // ---------------------------------------------------
             // ログイン済み→はデータの読み込み(監視)を開始
             // ---------------------------------------------------
-            if listener == nil {
+            if listenerPostData == nil {
                 // -------------------------------------------------------
                 // listener未登録なら、登録してスナップショットを受信する
                 // データベースの参照場所と取得順序を指定したクエリを作成
                 // postsフォルダに格納されているドキュメントを投稿日時の新しい順に取得する
                 // -------------------------------------------------------
-                let postsRef = Firestore.firestore().collection(Const.PostPath).order(by: "date", descending: true)
-                listener = postsRef.addSnapshotListener() { (querySnapshot, error) in
+                let postsRef = Firestore.firestore().collection(Const.PostPath).limit(to: 100).order(by: "date", descending: true)
+                listenerPostData = postsRef.addSnapshotListener() { (querySnapshot, error) in
                     if let error = error {
                         print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
                         return
@@ -69,14 +70,41 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     self.tableView.reloadData()
                 }
             }
+            // コメント　max1000
+            if listenerCommentData == nil {
+                
+                
+                var defaultStore : Firestore!
+
+                defaultStore = Firestore.firestore()
+                
+                let refComments2 = defaultStore.collection(Const.CommentPostPath).order(by: "date", descending: true).limit(to: 100)
+                
+                listenerCommentData = refComments2.addSnapshotListener() { (querySnapshot, error) in
+                   if let error = error {
+                       print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
+                       return
+                   }
+                    
+                   // 取得したdocumentをもとにPostDataを作成し、postArrayの配列にする。
+                    self.commentArray = querySnapshot!.documents.map { document in
+                       print("DEBUG_PRINT: document取得 \(document.documentID)")
+                       let commentData = CommentData(document: document)
+                       return commentData
+                   }
+                   // TableViewの表示を更新する
+                   self.tableView.reloadData()
+               }
+
+            }
         } else {
             // ---------------------------------------------------
             // ログイン未(またはログアウト済み)→データの読み込み(監視)を停止して、表示データをクリア
             // ---------------------------------------------------
-            if listener != nil {
+            if listenerPostData != nil {
                 // listener登録済みなら削除してpostArrayをクリアする
-                listener.remove()
-                listener = nil
+                listenerPostData.remove()
+                listenerPostData = nil
                 postArray = []
                 tableView.reloadData()
             }
