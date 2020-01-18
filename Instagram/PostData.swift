@@ -17,6 +17,9 @@ class PostData: NSObject {
     var likes: [String] = []    // いいねした人のIDの配列
     var isLiked: Bool = false   // 自分がいいねしたかどうかのフラグ
 
+    var comments: [String] = []    // コメント
+
+    
     init(document: QueryDocumentSnapshot) {
         
         //
