@@ -24,6 +24,7 @@
 		7F7D70D423D065CF00A49BD9 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7D70D323D065CF00A49BD9 /* PostData.swift */; };
 		7F7D70D723D066A000A49BD9 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7D70D523D066A000A49BD9 /* PostTableViewCell.swift */; };
 		7F7D70D823D066A000A49BD9 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F7D70D623D066A000A49BD9 /* PostTableViewCell.xib */; };
+		7F7D70DA23D30A7C00A49BD9 /* CommentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7D70D923D30A7C00A49BD9 /* CommentData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		7F7D70D323D065CF00A49BD9 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		7F7D70D523D066A000A49BD9 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		7F7D70D623D066A000A49BD9 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		7F7D70D923D30A7C00A49BD9 /* CommentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentData.swift; sourceTree = "<group>"; };
 		AF44F1D3D03F72993B294219 /* Pods-Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.debug.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 				7F7D70D323D065CF00A49BD9 /* PostData.swift */,
 				7F7D70D523D066A000A49BD9 /* PostTableViewCell.swift */,
 				7F7D70D623D066A000A49BD9 /* PostTableViewCell.xib */,
+				7F7D70D923D30A7C00A49BD9 /* CommentData.swift */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F7D70D723D066A000A49BD9 /* PostTableViewCell.swift in Sources */,
+				7F7D70DA23D30A7C00A49BD9 /* CommentData.swift in Sources */,
 				7F3C808023CB4CF5000FD0D4 /* ImageSelectViewController.swift in Sources */,
 				7F3C807E23CB4CC5000FD0D4 /* HomeViewController.swift in Sources */,
 				7F3C808223CB4D0C000FD0D4 /* PostViewController.swift in Sources */,

@@ -21,7 +21,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
     
-    
+    @IBOutlet weak var cmtButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,7 +41,17 @@ class PostTableViewCell: UITableViewCell {
         postImageView.sd_setImage(with: imageRef)
 
         // キャプションの表示
-        self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
+        //self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
+        let iLine = Int.random(in: 1..<5)
+        let sCaption  = "\(postData.name!) : \(postData.caption!)"
+        var sOut = ""
+        for i in 0..<iLine {
+            if i>0 {
+                sOut += "\n"
+            }
+            sOut += sCaption
+        }
+        self.captionLabel.text = sOut
 
         // 日時の表示
         self.dateLabel.text = ""

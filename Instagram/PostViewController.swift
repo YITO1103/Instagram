@@ -23,6 +23,8 @@ class PostViewController: UIViewController {
         // 画像と投稿データの保存場所を定義する
         let postRef = Firestore.firestore().collection(Const.PostPath).document()
         let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postRef.documentID + ".jpg")
+        let commentPostRef = Firestore.firestore().collection(Const.CommentPostPath).document()
+
         // HUDで投稿処理中の表示を開始
         SVProgressHUD.show()
         // Storageに画像をアップロードする
@@ -45,6 +47,18 @@ class PostViewController: UIViewController {
                 "date": FieldValue.serverTimestamp(),
                 ] as [String : Any]
             postRef.setData(postDic)
+            
+            // Dummy
+            //let commentRegName = Auth.auth().currentUser?.displayName
+            let commentRegDic = [
+                "name": name!,
+                "comment": "コメント",
+                "date": FieldValue.serverTimestamp(),
+                ] as [String : Any]
+            commentPostRef.setData(commentRegDic)
+            
+            
+            
             // HUDで投稿完了を表示する
             SVProgressHUD.showSuccess(withStatus: "投稿しました")
             // 投稿処理が完了したので先頭画面に戻る

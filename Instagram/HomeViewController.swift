@@ -8,6 +8,10 @@
 
 import UIKit
 import Firebase // Firestoreにアクセスできるようにする。
+import SVProgressHUD
+
+
+
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -29,11 +33,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
     }
-    
-    
-    
-    
-    
+
     // -----------------------------------------------------
     // ホーム画面を再表示するたびに何度も呼ばれる
     // -----------------------------------------------------
@@ -94,8 +94,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         // セル内のボタンのアクションをソースコードで設定する
         // ※青い線を引っ張ってActionを設定する代わり
-        cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
+        cell.likeButton.addTarget(self, action:#selector(handleLikeButton(_:forEvent:)), for: .touchUpInside)
 
+        cell.cmtButton.addTarget(self, action:#selector(handleCmtButton), for: .touchUpInside)
+ 
         return cell
     }
 
@@ -103,7 +105,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // 第一引数にはタップされたUIButtonのインスタンスが格納され、第二引数にはUIEvent型のタップイベントが格納されます。
     // タップイベントの中には、ボタンをタップした時の画面上の座標位置などが格納されています。
     // selector指定で呼び出されるメソッドは、先頭に @objcを付与してメソッドを宣言します。
-    @objc func handleButton(_ sender: UIButton, forEvent event: UIEvent) {
+    @objc func handleLikeButton(_ sender: UIButton, forEvent event: UIEvent) {
         print("DEBUG_PRINT: likeボタンがタップされました。")
 
         // タップされたセルのインデックスを求める
@@ -130,5 +132,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
             postRef.updateData(["likes": updateValue])
         }
+    }
+    @objc func handleCmtButton(_ sender: UIButton, forEvent event: UIEvent) {
+        print("DEBUG_PRINT: Cmtボタンがタップされました。")
+        SVProgressHUD.showSuccess(withStatus: "Cmtボタンがタップされました")
+
+
+        // タップされたセルのインデックスを求める
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+
+        // 配列からタップされたインデックスのデータを取り出す
+        let postData = postArray[indexPath!.row]
+
     }
 }

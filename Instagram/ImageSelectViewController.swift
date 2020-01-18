@@ -19,6 +19,7 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
             let pickerController = UIImagePickerController()
             pickerController.delegate = self
             pickerController.sourceType = .photoLibrary
+            pickerController.view.contentMode = .scaleToFill
             self.present(pickerController, animated: true, completion: nil)
         }
     }
