@@ -311,7 +311,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZbZ-6U-HJU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1340.5797101449277" y="-169.41964285714286"/>
+            <point key="canvasLocation" x="812" y="-169"/>
+        </scene>
+        <!--Comment View Controller-->
+        <scene sceneID="ag3-Dg-mwd">
+            <objects>
+                <viewController storyboardIdentifier="Comment" id="Kvn-GS-unI" customClass="CommentViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k1Q-1x-qrI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPf-HH-pCP">
+                                <rect key="frame" x="57" y="757" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="k25-ny-TkL"/>
+                                </constraints>
+                                <state key="normal" title="キャンセル" backgroundImage="btn">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleCancelButton:" destination="Kvn-GS-unI" eventType="touchUpInside" id="JlM-XP-fdQ"/>
+                                    <action selector="handleCancelButton:" destination="Rv4-gm-nBB" eventType="touchUpInside" id="U0e-5w-Plr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="GtJ-fH-m5g"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FFn-HC-6HD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1512" y="-169"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DYf-Q4-Mcc">

@@ -180,8 +180,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // 配列からタップされたインデックスのデータを取り出す
         let postData = postArray[indexPath!.row]
         let entryId = postData.id
-
-        // likesを更新する
+/*
         let name = Auth.auth().currentUser?.displayName
             
         let commentRegDic = [
@@ -198,10 +197,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         
         
-        
+*/
+        let commentViewController = self.storyboard?.instantiateViewController(withIdentifier: "Comment")
+        self.present(commentViewController!, animated: true, completion: nil)
+
         
         // HUDで投稿完了を表示する
-        SVProgressHUD.showSuccess(withStatus: "投稿しました:" + entryId )
+//        SVProgressHUD.showSuccess(withStatus: "投稿しました:" + entryId )
         
         
         
