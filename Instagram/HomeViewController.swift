@@ -45,6 +45,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // 現在のログイン状態を確認
         if Auth.auth().currentUser != nil {
+            
+            var bGo = false
             // ---------------------------------------------------
             // ログイン済み→はデータの読み込み(監視)を開始
             // ---------------------------------------------------
@@ -72,27 +74,22 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             // コメント　max1000
             if listenerCommentData == nil {
-                
-                
                 var defaultStore : Firestore!
 
                 defaultStore = Firestore.firestore()
-                
-                let refComments2 = defaultStore.collection(Const.CommentPostPath).order(by: "date", descending: true).limit(to: 100)
-                
-                listenerCommentData = refComments2.addSnapshotListener() { (querySnapshot, error) in
+                let refComments = defaultStore.collection(Const.CommentPostPath).order(by: "date", descending: true).limit(to: 1000)
+                listenerCommentData = refComments.addSnapshotListener() { (querySnapshot, error) in
                    if let error = error {
                        print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
                        return
                    }
-                    
                    // 取得したdocumentをもとにPostDataを作成し、postArrayの配列にする。
                     self.commentArray = querySnapshot!.documents.map { document in
-                       print("DEBUG_PRINT: document取得 \(document.documentID)")
+                       print("DEBUG_PRINT: comment取得 \(document.documentID)")
                        let commentData = CommentData(document: document)
                        return commentData
                    }
-                   // TableViewの表示を更新する
+                    // TableViewの表示を更新する
                    self.tableView.reloadData()
                }
 
@@ -161,11 +158,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             postRef.updateData(["likes": updateValue])
         }
     }
+    // コメントボタンタップ
     @objc func handleCmtButton(_ sender: UIButton, forEvent event: UIEvent) {
+        
+        let commentPostRef = Firestore.firestore().collection(Const.CommentPostPath).document()
+
         print("DEBUG_PRINT: Cmtボタンがタップされました。")
-        SVProgressHUD.showSuccess(withStatus: "Cmtボタンがタップされました")
-
-
         // タップされたセルのインデックスを求める
         let touch = event.allTouches?.first
         let point = touch!.location(in: self.tableView)
@@ -173,6 +171,32 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         // 配列からタップされたインデックスのデータを取り出す
         let postData = postArray[indexPath!.row]
+        let entryId = postData.id
 
+        // likesを更新する
+        let name = Auth.auth().currentUser?.displayName
+            
+        let commentRegDic = [
+            "entryId": entryId,
+            "name": name!,
+            "comment": "コメント" + postData.caption!,
+
+            "date": FieldValue.serverTimestamp(),
+            ] as [String : Any]
+        
+        commentPostRef.setData(commentRegDic)
+        
+        SVProgressHUD.showSuccess(withStatus: "Cmtボタンがタップされ、投稿されました:" + postData.id)
+
+        
+        
+        
+        
+        // HUDで投稿完了を表示する
+        SVProgressHUD.showSuccess(withStatus: "投稿しました:" + entryId )
+        
+        
+        
+        
     }
 }
