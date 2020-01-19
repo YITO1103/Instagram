@@ -116,15 +116,21 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostTableViewCell
         
         let postData = postArray[indexPath.row]
-//        cell.setPostData(postArray[indexPath.row])
-        cell.setPostData(postData)
 
+        let arrComments = commentArray.filter { $0.entryId   == postData.id }
+//        arrComments = arrComments.sorted(by: { $0.date?.compare($1.date ?? <#default value#>) == ComparisonResult.orderedDescending })
+//            arrComments.sort(by: { $0.date.compare($1.date) == ComparisonResult.orderedDescending })
+//            dump(CommentData)
+
+        cell.setPostData(postData,arrComments)
+
+        
         // セル内のボタンのアクションをソースコードで設定する
         // ※青い線を引っ張ってActionを設定する代わり
         cell.likeButton.addTarget(self, action:#selector(handleLikeButton(_:forEvent:)), for: .touchUpInside)
-
         cell.cmtButton.addTarget(self, action:#selector(handleCmtButton), for: .touchUpInside)
- 
+
+        
         return cell
     }
 
