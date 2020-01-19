@@ -169,7 +169,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // コメントボタンタップ
     @objc func handleCmtButton(_ sender: UIButton, forEvent event: UIEvent) {
         
-        let commentPostRef = Firestore.firestore().collection(Const.CommentPostPath).document()
+        //let commentPostRef = Firestore.firestore().collection(Const.CommentPostPath).document()
 
         print("DEBUG_PRINT: Cmtボタンがタップされました。")
         // タップされたセルのインデックスを求める
@@ -180,7 +180,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // 配列からタップされたインデックスのデータを取り出す
         let postData = postArray[indexPath!.row]
         let entryId = postData.id
+ 
+        //print("0000entryId:" + entryId)
 /*
+        let entryName  = postData.name
+        let entryDate = postData.date
+        let entryCaption = postData.caption
+ */
+
+        UserDefaults.standard.register(defaults: ["entryId":entryId ])
+        UserDefaults.standard.set(entryId,forKey:"entryId")
+        UserDefaults.standard.synchronize()
+
+        /*
         let name = Auth.auth().currentUser?.displayName
             
         let commentRegDic = [

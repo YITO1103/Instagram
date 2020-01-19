@@ -316,13 +316,13 @@
         <!--Comment View Controller-->
         <scene sceneID="ag3-Dg-mwd">
             <objects>
-                <viewController storyboardIdentifier="Comment" id="Kvn-GS-unI" customClass="CommentViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Comment" modalPresentationStyle="fullScreen" id="Kvn-GS-unI" customClass="CommentViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k1Q-1x-qrI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPf-HH-pCP">
-                                <rect key="frame" x="57" y="757" width="300" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPf-HH-pCP">
+                                <rect key="frame" x="10" y="812" width="394" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="k25-ny-TkL"/>
                                 </constraints>
@@ -334,14 +334,94 @@
                                     <action selector="handleCancelButton:" destination="Rv4-gm-nBB" eventType="touchUpInside" id="U0e-5w-Plr"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ub-cF-Rjl">
+                                <rect key="frame" x="10" y="762" width="394" height="40"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="AI8-WK-3Cj"/>
+                                </constraints>
+                                <state key="normal" title="投稿" backgroundImage="btn">
+                                    <color key="titleColor" red="0.98039215690000003" green="0.98862444930000004" blue="0.98385942059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleLoginButton:" destination="jvg-vu-J7f" eventType="touchUpInside" id="Fg4-J0-TZJ"/>
+                                    <action selector="tapRegButton:" destination="Kvn-GS-unI" eventType="touchUpInside" id="iOD-e1-QQT"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="コメントを入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UgJ-c0-18T">
+                                <rect key="frame" x="10" y="718" width="394" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投稿者名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daj-Pe-nA4">
+                                <rect key="frame" x="10" y="687.5" width="394" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wJL-dp-Kbj">
+                                <rect key="frame" x="10" y="54" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="jgj-Vj-vds"/>
+                                    <constraint firstAttribute="height" constant="60" id="qeA-jN-EAH"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="エントリ情報" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mP1-od-hCr">
+                                <rect key="frame" x="80" y="54" width="324" height="60"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="w9h-bs-FJT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ocO-By-mNF">
+                                <rect key="frame" x="0.0" y="124" width="414" height="553.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="daj-Pe-nA4" firstAttribute="top" secondItem="ocO-By-mNF" secondAttribute="bottom" constant="10" id="5vd-ir-sSr"/>
+                            <constraint firstItem="GtJ-fH-m5g" firstAttribute="trailing" secondItem="3ub-cF-Rjl" secondAttribute="trailing" constant="10" id="8Z4-XV-Fte"/>
+                            <constraint firstItem="ocO-By-mNF" firstAttribute="leading" secondItem="GtJ-fH-m5g" secondAttribute="leading" id="Bec-7Z-vaK"/>
+                            <constraint firstItem="wJL-dp-Kbj" firstAttribute="leading" secondItem="GtJ-fH-m5g" secondAttribute="leading" constant="10" id="CyQ-5a-N0e"/>
+                            <constraint firstItem="daj-Pe-nA4" firstAttribute="leading" secondItem="GtJ-fH-m5g" secondAttribute="leading" constant="10" id="Q1U-E8-nUF"/>
+                            <constraint firstItem="HPf-HH-pCP" firstAttribute="top" secondItem="3ub-cF-Rjl" secondAttribute="bottom" constant="10" id="SEe-do-fbm"/>
+                            <constraint firstItem="HPf-HH-pCP" firstAttribute="leading" secondItem="GtJ-fH-m5g" secondAttribute="leading" constant="10" id="UX6-FU-rLw"/>
+                            <constraint firstItem="UgJ-c0-18T" firstAttribute="centerX" secondItem="ocO-By-mNF" secondAttribute="centerX" id="YT5-aw-InE"/>
+                            <constraint firstItem="GtJ-fH-m5g" firstAttribute="trailing" secondItem="daj-Pe-nA4" secondAttribute="trailing" constant="10" id="aS3-4d-UoE"/>
+                            <constraint firstItem="GtJ-fH-m5g" firstAttribute="trailing" secondItem="HPf-HH-pCP" secondAttribute="trailing" constant="10" id="bxy-hU-fPB"/>
+                            <constraint firstItem="wJL-dp-Kbj" firstAttribute="top" secondItem="GtJ-fH-m5g" secondAttribute="top" constant="10" id="dwK-R4-t9P"/>
+                            <constraint firstItem="mP1-od-hCr" firstAttribute="top" secondItem="GtJ-fH-m5g" secondAttribute="top" constant="10" id="dym-g1-PVD"/>
+                            <constraint firstItem="UgJ-c0-18T" firstAttribute="leading" secondItem="GtJ-fH-m5g" secondAttribute="leading" constant="10" id="eOm-aw-4Fj"/>
+                            <constraint firstItem="HPf-HH-pCP" firstAttribute="centerX" secondItem="ocO-By-mNF" secondAttribute="centerX" id="ghQ-5N-KKG"/>
+                            <constraint firstItem="daj-Pe-nA4" firstAttribute="centerX" secondItem="ocO-By-mNF" secondAttribute="centerX" id="gkF-W1-BAa"/>
+                            <constraint firstItem="GtJ-fH-m5g" firstAttribute="trailing" secondItem="ocO-By-mNF" secondAttribute="trailing" id="lC7-VW-Wbk"/>
+                            <constraint firstItem="3ub-cF-Rjl" firstAttribute="top" secondItem="UgJ-c0-18T" secondAttribute="bottom" constant="10" id="m4m-3b-Tri"/>
+                            <constraint firstItem="mP1-od-hCr" firstAttribute="leading" secondItem="wJL-dp-Kbj" secondAttribute="trailing" constant="10" id="qR3-rs-vL3"/>
+                            <constraint firstItem="GtJ-fH-m5g" firstAttribute="trailing" secondItem="UgJ-c0-18T" secondAttribute="trailing" constant="10" id="qS8-Bt-hpu"/>
+                            <constraint firstItem="3ub-cF-Rjl" firstAttribute="leading" secondItem="GtJ-fH-m5g" secondAttribute="leading" constant="10" id="rJx-Ju-UND"/>
+                            <constraint firstItem="daj-Pe-nA4" firstAttribute="top" secondItem="ocO-By-mNF" secondAttribute="bottom" constant="10" id="sTV-Lz-uhx"/>
+                            <constraint firstItem="UgJ-c0-18T" firstAttribute="top" secondItem="daj-Pe-nA4" secondAttribute="bottom" constant="10" id="uYg-DL-Fnd"/>
+                            <constraint firstItem="3ub-cF-Rjl" firstAttribute="centerX" secondItem="ocO-By-mNF" secondAttribute="centerX" id="ulm-E6-TvF"/>
+                            <constraint firstItem="GtJ-fH-m5g" firstAttribute="bottom" secondItem="HPf-HH-pCP" secondAttribute="bottom" constant="10" id="w5F-rQ-ipY"/>
+                            <constraint firstItem="GtJ-fH-m5g" firstAttribute="trailing" secondItem="mP1-od-hCr" secondAttribute="trailing" constant="10" id="zcV-RL-kmN"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="GtJ-fH-m5g"/>
                     </view>
+                    <connections>
+                        <outlet property="labelName" destination="daj-Pe-nA4" id="dCF-xq-ylg"/>
+                        <outlet property="labelPost" destination="mP1-od-hCr" id="gDy-86-KUV"/>
+                        <outlet property="postImageView" destination="wJL-dp-Kbj" id="x6C-RS-pEe"/>
+                        <outlet property="textGieldComment" destination="UgJ-c0-18T" id="4Ki-m1-KQa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FFn-HC-6HD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1512" y="-169"/>
+            <point key="canvasLocation" x="1511.5942028985507" y="-169.41964285714286"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DYf-Q4-Mcc">
