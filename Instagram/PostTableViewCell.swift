@@ -23,6 +23,9 @@ class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cmtButton: UIButton!
     
+    @IBOutlet weak var cmtLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

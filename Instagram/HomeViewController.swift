@@ -46,7 +46,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // 現在のログイン状態を確認
         if Auth.auth().currentUser != nil {
             
-            var bGo = false
             // ---------------------------------------------------
             // ログイン済み→はデータの読み込み(監視)を開始
             // ---------------------------------------------------
@@ -115,7 +114,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // セルを取得してデータを設定する
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostTableViewCell
-        cell.setPostData(postArray[indexPath.row])
+        
+        let postData = postArray[indexPath.row]
+//        cell.setPostData(postArray[indexPath.row])
+        cell.setPostData(postData)
 
         // セル内のボタンのアクションをソースコードで設定する
         // ※青い線を引っ張ってActionを設定する代わり
