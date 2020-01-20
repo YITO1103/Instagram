@@ -118,9 +118,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let postData = postArray[indexPath.row]
 
         let arrComments = commentArray.filter { $0.entryId   == postData.id }
-//        arrComments = arrComments.sorted(by: { $0.date?.compare($1.date ?? <#default value#>) == ComparisonResult.orderedDescending })
-//            arrComments.sort(by: { $0.date.compare($1.date) == ComparisonResult.orderedDescending })
-//            dump(CommentData)
 
         cell.setPostData(postData,arrComments)
 
@@ -161,15 +158,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 updateValue = FieldValue.arrayUnion([myid])
             }
             // likesに更新データを書き込む
-            // Firestoreのlikes配列を更新すると、 addSnapshotListenerで監視しているリスナーが投稿データの更新を検出してクロージャを呼び出すため、テーブル表示は自動的に最新の状態に更新される。
+            // Firestoreのlikes配列を更新すると、 addSnapshotListenerで監視しているリスナーが
+            // 投稿データの更新を検出してクロージャを呼び出すため、テーブル表示は自動的に最新の状態に更新される。
             let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
             postRef.updateData(["likes": updateValue])
         }
     }
+    var curPostData: PostData!
+    var curArrComment: [CommentData]!
     // コメントボタンタップ
     @objc func handleCmtButton(_ sender: UIButton, forEvent event: UIEvent) {
-        
-        //let commentPostRef = Firestore.firestore().collection(Const.CommentPostPath).document()
 
         print("DEBUG_PRINT: Cmtボタンがタップされました。")
         // タップされたセルのインデックスを求める
@@ -178,46 +176,22 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let indexPath = tableView.indexPathForRow(at: point)
 
         // 配列からタップされたインデックスのデータを取り出す
-        let postData = postArray[indexPath!.row]
-        let entryId = postData.id
- 
-        //print("0000entryId:" + entryId)
-/*
-        let entryName  = postData.name
-        let entryDate = postData.date
-        let entryCaption = postData.caption
- */
-
-        UserDefaults.standard.register(defaults: ["entryId":entryId ])
-        UserDefaults.standard.set(entryId,forKey:"entryId")
-        UserDefaults.standard.synchronize()
-
-        /*
-        let name = Auth.auth().currentUser?.displayName
-            
-        let commentRegDic = [
-            "entryId": entryId,
-            "name": name!,
-            "comment": "コメント" + postData.caption!,
-
-            "date": FieldValue.serverTimestamp(),
-            ] as [String : Any]
-        
-        commentPostRef.setData(commentRegDic)
-        
-        SVProgressHUD.showSuccess(withStatus: "Cmtボタンがタップされ、投稿されました:" + postData.id)
-
-        
-        
-*/
-        //let commentViewController = self.storyboard?.instantiateViewController(withIdentifier: "Comment")
-        //self.present(commentViewController!, animated: true, completion: nil)
-
-        self.performSegue(withIdentifier: "comment", sender: self)        // HUDで投稿完了を表示する
-//        SVProgressHUD.showSuccess(withStatus: "投稿しました:" + entryId )
-        
-        
-        
-        
+        curPostData = postArray[indexPath!.row]
+        let entryId = curPostData.id
+        curArrComment = commentArray.filter({$0.entryId == entryId})
     }
+    // セグエ実行前処理
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == "comment" {
+                // 遷移先ViewCntrollerの取得
+                let commentViewController = segue.destination as! CommentViewController
+        
+                // 値の設定
+                commentViewController.postData = curPostData
+                commentViewController.commentArray = curArrComment
+            }
+       }
+    
+    
+    
 }

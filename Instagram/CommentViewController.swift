@@ -33,15 +33,7 @@ class CommentViewController: UIViewController {
     var listenerPostData: ListenerRegistration!
     var listenerCommentData: ListenerRegistration!
     
-    
-    
-    
-    
-    func setViewData(_ postData: PostData){
-        
 
-    }
-    
     
     
     @IBAction func tapRegButton(_ sender: Any) {
@@ -55,70 +47,27 @@ class CommentViewController: UIViewController {
     
 
     var entryId: String = ""
-    
+    // キャンセル
     @IBAction func handleCancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
 
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        entryId = postData.id
+        // 画像の表示
+        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(self.entryId + ".jpg")
+        self.postImageView.sd_setImage(with: imageRef)
         
-        /// ローカルストレージ(UserDefaults)から値を取得
-        guard let obj = UserDefaults.standard.object(forKey: "entryId") else {
-            return
+        // 初期表示
+        var sDate = ""
+
+        if let date = postData.date {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+            sDate = formatter.string(from: date)
         }
-        entryId = obj as? String ?? ""
-        //bprint("1111entryId:" + entryId)
-
-        
-        
-         if listenerPostData == nil {
-            // -------------------------------------------------------
-            // listener未登録なら、登録してスナップショットを受信する
-            // データベースの参照場所と取得順序を指定したクエリを作成
-            // postsフォルダに格納されているドキュメントを投稿日時の新しい順に取得する
-            // -------------------------------------------------------
-            let postsRef = Firestore.firestore().collection(Const.PostPath).limit(to: 100).order(by: "date", descending: true)
-            listenerPostData = postsRef.addSnapshotListener() { (querySnapshot, error) in
-                if let error = error {
-                    print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
-                    return
-                }
-                // 取得したdocumentをもとにPostDataを作成し、postArrayの配列にする。
-                self.postArray = querySnapshot!.documents.map { document in
-                    print("DEBUG_PRINT: document取得 \(document.documentID)")
-                    let postData = PostData(document: document)
-                    return postData
-                }
-                // TableViewの表示を更新する
-                //self.tableView.reloadData()
-                let arrP = self.postArray.filter { $0.id  == self.entryId }
-                let postData: PostData = arrP[0]
-                //print(postData.name)
-                //        // 画像の表示
-                //.sd_imageIndicator = SDWebImageActivityIndicator.gray
-                let imageRef = Storage.storage().reference().child(Const.ImagePath).child(self.entryId + ".jpg")
-                //postImageView.sd_setImage(with: imageRef)
-                self.postImageView.sd_setImage(with: imageRef)
-                var sDate = ""
-
-                if let date = postData.date {
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-                    sDate = formatter.string(from: date)
-                }
-                self.labelPost.text = sDate + "  " + postData.name! + "\n" + postData.caption!
-                //print(self.labelPost.text)
-                self.labelName.text = postData.name! // + "：" + postData.caption!
-                
-            }
-        }
-
-        
-        
+        self.labelPost.text = sDate + "  " + postData.name! + "\n" + postData.caption!
+        self.labelName.text = "コメント投稿者名：" + postData.name!
     }
-    
-
-
 }
