@@ -9,10 +9,6 @@
 import UIKit
 import FirebaseUI
 
-
-
-
-
 class PostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var postImageView: UIImageView!
@@ -24,17 +20,14 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var cmtButton: UIButton!
     
     @IBOutlet weak var cmtLabel: UILabel!
-    
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     // PostDataの内容をセルに表示
     func setPostData(_ postData: PostData, _ arrComments: [CommentData] ) {
@@ -68,47 +61,14 @@ class PostTableViewCell: UITableViewCell {
             if (cmtData.comment != nil)  {
                 sCmt = cmtData.comment!
             }
-
             sComment += "\n\(sDate) \(sName)さん \(sCmt)"
-
-
 
             if arrComments.count > 1 {
                 sComment += " など…"
             }
-
-            self.cmtLabel.text = sComment
-            
-            /*
-            self.cmtLabel.text = "コメント：" + arrComments.count.description
-            for i in 0..<arrComments.count - 1 {
-                let cmtData = arrComments[i]
-                var str1 = ""
-                var str2 = ""
-                if (postData.name != nil)  {
-                    str1 = cmtData.name!
-                    
-                }
-                if (cmtData.comment != nil)  {
-                    str2 = cmtData.comment!
-                }
-                if let date = cmtData.date {
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "yy/MM/dd HH:mm:ss"
-                    let dateString = formatter.string(from: date)
-                    str2 = dateString + str2
-                }
-                let sWork  = "\(str1) : \(str2)"
-                if sComment.count > 0 {
-                    sComment += "\n"
-                }
-                sComment += sWork
-                
-            }
-            self.cmtLabel.text = sComment
- */
         }
-
+        self.cmtLabel.text = sComment
+        
         // 日時の表示
         self.dateLabel.text = ""
         if let date = postData.date {

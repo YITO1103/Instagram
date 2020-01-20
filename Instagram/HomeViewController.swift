@@ -117,17 +117,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let postData = postArray[indexPath.row]
 
+        //var arrComments: [CommentData] = []
         let arrComments = commentArray.filter { $0.entryId   == postData.id }
 
         cell.setPostData(postData,arrComments)
 
-        
         // セル内のボタンのアクションをソースコードで設定する
         // ※青い線を引っ張ってActionを設定する代わり
         cell.likeButton.addTarget(self, action:#selector(handleLikeButton(_:forEvent:)), for: .touchUpInside)
         cell.cmtButton.addTarget(self, action:#selector(handleCmtButton), for: .touchUpInside)
 
-        
         return cell
     }
 
@@ -187,15 +186,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     // セグエ実行前処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-           if segue.identifier == "comment" {
-                // 遷移先ViewCntrollerの取得
-                let commentViewController = segue.destination as! CommentViewController
-        
-                // 値の設定
-                commentViewController.postData = curPostData
-                commentViewController.commentArray = curArrComment
-            }
-       }
+       if segue.identifier == "comment" {
+            // 遷移先ViewCntrollerの取得
+            let commentViewController = segue.destination as! CommentViewController
+    
+            // 値の設定
+            commentViewController.postData = curPostData
+            commentViewController.commentArray = curArrComment
+        }
+    }
     
     
     
