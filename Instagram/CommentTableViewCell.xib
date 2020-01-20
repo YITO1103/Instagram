@@ -16,13 +16,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="436" height="137"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQW-aV-pY1">
-                        <rect key="frame" x="197" y="10" width="219" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQW-aV-pY1">
+                        <rect key="frame" x="384" y="10" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yah-hd-QKe">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yah-hd-QKe">
                         <rect key="frame" x="10" y="10" width="42" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -37,7 +37,6 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Qgy-Yd-jcS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="52K-uE-8h5"/>
-                    <constraint firstItem="tQW-aV-pY1" firstAttribute="leading" secondItem="yah-hd-QKe" secondAttribute="trailing" constant="10" id="7ji-0e-3fC"/>
                     <constraint firstAttribute="trailing" secondItem="Qgy-Yd-jcS" secondAttribute="trailing" constant="10" id="DPc-fk-KWN"/>
                     <constraint firstAttribute="bottom" secondItem="Qgy-Yd-jcS" secondAttribute="bottom" constant="10" id="OPP-6A-Aje"/>
                     <constraint firstItem="tQW-aV-pY1" firstAttribute="centerY" secondItem="yah-hd-QKe" secondAttribute="centerY" id="TxY-c3-3mp"/>
