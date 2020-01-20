@@ -353,6 +353,9 @@
                                 <rect key="frame" x="10" y="718" width="394" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="cmtInput:" destination="Kvn-GS-unI" eventType="editingDidEndOnExit" id="zOO-vo-7Sa"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投稿者名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daj-Pe-nA4">
                                 <rect key="frame" x="10" y="687.5" width="394" height="20.5"/>
@@ -415,7 +418,7 @@
                         <outlet property="labelPost" destination="mP1-od-hCr" id="gDy-86-KUV"/>
                         <outlet property="postImageView" destination="wJL-dp-Kbj" id="x6C-RS-pEe"/>
                         <outlet property="tableView" destination="ocO-By-mNF" id="aV1-cz-afG"/>
-                        <outlet property="textGieldComment" destination="UgJ-c0-18T" id="4Ki-m1-KQa"/>
+                        <outlet property="textFieldComment" destination="UgJ-c0-18T" id="4Ki-m1-KQa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FFn-HC-6HD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

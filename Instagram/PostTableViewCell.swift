@@ -73,7 +73,7 @@ class PostTableViewCell: UITableViewCell {
 
 
 
-            if sName.count > 1 {
+            if arrComments.count > 1 {
                 sComment += " など…"
             }
 

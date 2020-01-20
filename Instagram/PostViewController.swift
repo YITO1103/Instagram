@@ -50,7 +50,7 @@ class PostViewController: UIViewController {
                 ] as [String : Any]
             postRef.setData(postDic)
 
-        // 投稿処理が完了したので先頭画面に戻る
+            // 投稿処理が完了したので先頭画面に戻る
             SVProgressHUD.dismiss()
             UIApplication.shared.windows.first{ $0.isKeyWindow }?.rootViewController?.dismiss(animated: true, completion: nil)
         }

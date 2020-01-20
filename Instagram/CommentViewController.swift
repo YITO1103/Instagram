@@ -14,35 +14,57 @@ import SVProgressHUD
 
 
 //class CommentViewController: UIViewController {
-class CommentViewController: UIViewController , UITableViewDataSource, UITableViewDelegate {
+class CommentViewController: UIViewController , UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var labelName: UILabel!
-    @IBOutlet weak var textGieldComment: UITextField!
+    @IBOutlet weak var textFieldComment: UITextField!
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var labelPost: UILabel!
     
     var postData: PostData!
-    // 投稿データを格納する配列
-    //var postArray: [PostData] = []
-    // 投稿データを格納する配列
+    // コメントデータを格納する配列
     var commentArray: [CommentData] = []
-    
-    
-    @IBOutlet weak var tableView: UITableView!
-    
-
-    
-    
-    @IBAction func tapRegButton(_ sender: Any) {
         
-
+    @IBOutlet weak var tableView: UITableView!
+    // コメントを投稿
+    @IBAction func tapRegButton(_ sender: Any) {
+        let sCmt = textFieldComment.text!
+        if sCmt.count < 0 {
+            SVProgressHUD.showError(withStatus: "コメントを入力してください。")
+            return
+        }
+        let commentRef = Firestore.firestore().collection(Const.CommentPostPath).document()
+        ///print(textFieldComment.text)
+        //let name = Auth.auth().currentUser?.displayName
+        let commentDic = [
+            "entryId": postData.id,
+            "name": postData.name!,
+            "comment": textFieldComment.text!,
+            "date": FieldValue.serverTimestamp(),
+            ] as [String : Any]
+        
+        commentRef.setData(commentDic)
         // HUDで完了を知らせる
         SVProgressHUD.showSuccess(withStatus: "コメントを投稿しました")
         self.dismiss(animated: true, completion: nil)
 
     }
-    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        labelName.text = textFieldComment.text
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // キーボードを閉じる
+        textField.resignFirstResponder()
+        let sbk = labelName.text
+        labelName.text = textFieldComment.text
+        labelName.text = sbk
+        return true
+    }
     var entryId: String = ""
     // キャンセル
     @IBAction func handleCancelButton(_ sender: Any) {
@@ -54,21 +76,19 @@ class CommentViewController: UIViewController , UITableViewDataSource, UITableVi
         
         tableView.delegate = self
         tableView.dataSource = self
-
+        textFieldComment.delegate = self
+        
+        
         // カスタムセルを登録する
         let nib = UINib(nibName: "CommentTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "CommentCell")
-        
-        
-        
         entryId = postData.id
         // 画像の表示
-        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(self.entryId + ".jpg")
+        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(entryId + ".jpg")
         self.postImageView.sd_setImage(with: imageRef)
         
         // 初期表示
         var sDate = ""
-
         if let date = postData.date {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
@@ -88,6 +108,4 @@ class CommentViewController: UIViewController , UITableViewDataSource, UITableVi
         cell.setCommentData(commentArray[indexPath.row])
         return cell
     }
-    
-    
 }
