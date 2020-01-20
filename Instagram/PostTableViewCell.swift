@@ -44,7 +44,7 @@ class PostTableViewCell: UITableViewCell {
         postImageView.sd_setImage(with: imageRef)
 
         // キャプションの表示
-        self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
+        self.captionLabel.text = "\(postData.name!) さん　 \(postData.caption!)"
         // コメントの表示
         var sComment = ""
 
