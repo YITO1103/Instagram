@@ -210,11 +210,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
 */
-        let commentViewController = self.storyboard?.instantiateViewController(withIdentifier: "Comment")
-        self.present(commentViewController!, animated: true, completion: nil)
+        //let commentViewController = self.storyboard?.instantiateViewController(withIdentifier: "Comment")
+        //self.present(commentViewController!, animated: true, completion: nil)
 
-        
-        // HUDで投稿完了を表示する
+        self.performSegue(withIdentifier: "comment", sender: self)        // HUDで投稿完了を表示する
 //        SVProgressHUD.showSuccess(withStatus: "投稿しました:" + entryId )
         
         
