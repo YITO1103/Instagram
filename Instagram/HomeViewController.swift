@@ -179,6 +179,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         curPostData = postArray[indexPath!.row]
         let entryId = curPostData.id
         curArrComment = commentArray.filter({$0.entryId == entryId})
+        
+        
+        self.performSegue(withIdentifier: "comment", sender: self)
+        
+        
     }
     // セグエ実行前処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

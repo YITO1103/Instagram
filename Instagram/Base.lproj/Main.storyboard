@@ -414,6 +414,7 @@
                         <outlet property="labelName" destination="daj-Pe-nA4" id="dCF-xq-ylg"/>
                         <outlet property="labelPost" destination="mP1-od-hCr" id="gDy-86-KUV"/>
                         <outlet property="postImageView" destination="wJL-dp-Kbj" id="x6C-RS-pEe"/>
+                        <outlet property="tableView" destination="ocO-By-mNF" id="aV1-cz-afG"/>
                         <outlet property="textGieldComment" destination="UgJ-c0-18T" id="4Ki-m1-KQa"/>
                     </connections>
                 </viewController>

@@ -13,7 +13,8 @@ import SVProgressHUD
 
 
 
-class CommentViewController: UIViewController {
+//class CommentViewController: UIViewController {
+class CommentViewController: UIViewController , UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var textGieldComment: UITextField!
@@ -22,16 +23,12 @@ class CommentViewController: UIViewController {
     
     var postData: PostData!
     // 投稿データを格納する配列
-    var postArray: [PostData] = []
+    //var postArray: [PostData] = []
     // 投稿データを格納する配列
     var commentArray: [CommentData] = []
     
     
-
-
-    // Firestoreのリスナー　データ更新の監視を行う
-    var listenerPostData: ListenerRegistration!
-    var listenerCommentData: ListenerRegistration!
+    @IBOutlet weak var tableView: UITableView!
     
 
     
@@ -54,6 +51,16 @@ class CommentViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+
+        // カスタムセルを登録する
+        let nib = UINib(nibName: "CommentTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "CommentCell")
+        
+        
+        
         entryId = postData.id
         // 画像の表示
         let imageRef = Storage.storage().reference().child(Const.ImagePath).child(self.entryId + ".jpg")
@@ -70,4 +77,17 @@ class CommentViewController: UIViewController {
         self.labelPost.text = sDate + "  " + postData.name! + "\n" + postData.caption!
         self.labelName.text = "コメント投稿者名：" + postData.name!
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return commentArray.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // セルを取得してデータを設定する
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
+        cell.setCommentData(commentArray[indexPath.row])
+        return cell
+    }
+    
+    
 }
