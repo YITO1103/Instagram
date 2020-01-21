@@ -73,7 +73,7 @@ class PostTableViewCell: UITableViewCell {
         self.dateLabel.text = ""
         if let date = postData.date {
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd HH:mm"
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             let dateString = formatter.string(from: date)
             self.dateLabel.text = dateString
         }

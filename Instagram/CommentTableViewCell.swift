@@ -36,7 +36,7 @@ class CommentTableViewCell: UITableViewCell {
             self.labelDate.text = dateString
         }
         //
-        labelName.text = commentData.name
+        labelName.text = commentData.name! + "さん"
         //
         labelComment.text = commentData.comment
         
